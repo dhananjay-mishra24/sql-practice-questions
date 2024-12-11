@@ -1,0 +1,38 @@
+Given the CITY and COUNTRY tables, query the names of all cities where the CONTINENT is 'Africa'.
+
+Note: CITY.CountryCode and COUNTRY.Code are matching key columns.
+
+CITY - TABLE NAME
+
+COLUMNS        
+ID
+NAME
+COUNTRYCODE
+DISTRICT
+POPULATION
+
+COUNTRY - TABLE NAME
+CODE
+NAME
+CONTINENT
+REGION
+POPULATION
+
+
+
+SOLUTION - 
+
+This query can be solved by inner join also but i tried it with Sub-query
+
+SELECT 
+    ct.name
+FROM
+    CITY ct
+WHERE
+    ct.COUNTRYCODE IN (
+                        SELECT 
+                            cu.CODE
+                        FROM
+                            COUNTRY cu
+                        WHERE cu.CONTINENT = 'Africa'
+                        )
